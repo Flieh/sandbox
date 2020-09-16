@@ -20,3 +20,22 @@ def isPath(n,sides):
     else:
         return False
 
+def totalPyramid(pyramid):
+    total = 0
+    for i in range(len(pyramid)):
+        for j in pyramid[i]:
+            total += j
+    return total
+
+def getRightPyramid(p):
+    new_p = []
+    for i in range(len(p)):
+        if i == 0:
+            continue
+        row = []
+        for j in range(len(p[i])):
+            if j == 0:
+                continue
+            row.append(p[i][j])
+        new_p.append(row)
+    return new_p
