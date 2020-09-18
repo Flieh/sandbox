@@ -11,14 +11,12 @@ def countCollatz(n):
 def isEven(n):
     if n % 2 == 0:
         return True
-    else:
-        return False
+    return False
 
 def isPath(n,sides):
     if str(bin(n)).count('1') == sides:
         return True
-    else:
-        return False
+    return False
 
 def totalPyramid(pyramid):
     total = 0
@@ -35,6 +33,19 @@ def getRightPyramid(p):
         row = []
         for j in range(len(p[i])):
             if j == 0:
+                continue
+            row.append(p[i][j])
+        new_p.append(row)
+    return new_p
+
+def getLeftPyramid(p):
+    new_p = []
+    for i in range(len(p)):
+        if i == 0:
+            continue
+        row = []
+        for j in range(len(p[i])):
+            if j == len(p[i]) - 1:
                 continue
             row.append(p[i][j])
         new_p.append(row)
