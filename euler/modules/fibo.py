@@ -8,9 +8,18 @@ def fib(n):    # write Fibonacci series up to n
     print()
 
 def fib2(n):   # return Fibonacci series up to n
+
     result = []
     a, b = 0, 1
     while a < n:
         result.append(a)
         a, b = b, a+b
-    return result
+    return result[-1]
+
+def memo(func):
+    memo = []
+    def helper(n):
+        if n not in memo:
+            memo[n] = func(a)
+        return memo[x]
+    return helper
