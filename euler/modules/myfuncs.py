@@ -62,6 +62,7 @@ def build_pyramid(inp_list):
     return pyramid
 
 DIGITS = {
+        0: '',
         1: 'one',
         2: 'two',
         3: 'three',
@@ -73,25 +74,33 @@ DIGITS = {
         9: 'nine'
         }
 TEENS = {
-        10: 'ten',
-        11: 'eleven',
-        12: 'twelve',
-        13: 'thirteen',
-        14: 'fourteen',
-        15: 'fifteen',
-        16: 'sixteen',
-        17: 'seventeen',
-        18: 'eighteen',
-        19: 'nineteen'
+        0: 'ten',
+        1: 'eleven',
+        2: 'twelve',
+        3: 'thirteen',
+        4: 'fourteen',
+        5: 'fifteen',
+        6: 'sixteen',
+        7: 'seventeen',
+        8: 'eighteen',
+        9: 'nineteen'
         }
 TENS = {
-        20: 'twenty',
-        30: 'thirty',
-        40: 'forty',
-        50: 'fifty',
-        60: 'sixty',
-        70: 'seventy',
-        80: 'eighty',
-        90: 'ninety'
+        0: '',
+        1: '',
+        2: 'twenty',
+        3: 'thirty',
+        4: 'forty',
+        5: 'fifty',
+        6: 'sixty',
+        7: 'seventy',
+        8: 'eighty',
+        9: 'ninety'
         }
 
+def sum_div(n):
+    total = 0
+    for i in range(1, n // 2 + 1):
+        if n % i == 0:
+            total += i
+    return total

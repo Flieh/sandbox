@@ -14,3 +14,6 @@ def fib2(n):   # return Fibonacci series up to n
         result.append(a)
         a, b = b, a+b
     return result
+
+def last_fib(n):
+    return fib2(n)[-1]
