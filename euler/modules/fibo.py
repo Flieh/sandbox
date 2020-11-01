@@ -14,6 +14,7 @@ def fib2(n):   # return Fibonacci series up to n
     while a < n:
         result.append(a)
         a, b = b, a+b
+<<<<<<< HEAD
     return result[-1]
 
 def memo(func):
@@ -23,3 +24,9 @@ def memo(func):
             memo[n] = func(a)
         return memo[x]
     return helper
+=======
+    return result
+
+def last_fib(n):
+    return fib2(n)[-1]
+>>>>>>> d91c550421e88fae43cf94764fe49e2f7fc65784
