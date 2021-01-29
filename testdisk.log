@@ -1,0 +1,609 @@
+
+
+Thu Nov 19 07:57:16 2020
+Command line: TestDisk
+
+TestDisk 7.0, Data Recovery Utility, April 2015
+Christophe GRENIER <grenier@cgsecurity.org>
+http://www.cgsecurity.org
+OS: Linux, kernel 5.0.0-32-generic (#34~18.04.2-Ubuntu SMP Thu Oct 10 10:36:02 UTC 2019) x86_64
+Compiler: GCC 7.2
+ext2fs lib: 1.44.1, ntfs lib: libntfs-3g, reiserfs lib: none, ewf lib: none, curses lib: ncurses 6.0
+/dev/sda: LBA, HPA, LBA48, DCO support
+/dev/sda: size       1250263728 sectors
+/dev/sda: user_max   1250263728 sectors
+/dev/sda: native_max 1250263728 sectors
+/dev/sda: dco        1250263728 sectors
+Warning: can't get size for Disk /dev/mapper/control - 0 B - 0 sectors, sector size=512
+Hard disk list
+Disk /dev/sda - 640 GB / 596 GiB - CHS 77825 255 63, sector size=512 - Hitachi HDT721064SLA360, S/N:STFD08MG1UG96K, FW:ST0KA36A
+Disk /dev/sdb - 7747 MB / 7389 MiB - CHS 1021 239 62, sector size=512, FW:PMAP
+
+Partition table type (auto): EFI GPT
+Disk /dev/sda - 640 GB / 596 GiB - Hitachi HDT721064SLA360
+Partition table type: EFI GPT
+
+Interface Advanced
+hdr_size=92
+hdr_lba_self=1
+hdr_lba_alt=1250263727 (expected 1250263727)
+hdr_lba_start=34
+hdr_lba_end=1250263694
+hdr_lba_table=2
+hdr_entries=128
+hdr_entsz=128
+ 1 P EFI System                  2048    1050623    1048576 [EFI System Partition]
+ 2 P Unknown                  1050624 1250263039 1249212416
+
+Analyse Disk /dev/sda - 640 GB / 596 GiB - CHS 77825 255 63
+hdr_size=92
+hdr_lba_self=1
+hdr_lba_alt=1250263727 (expected 1250263727)
+hdr_lba_start=34
+hdr_lba_end=1250263694
+hdr_lba_table=2
+hdr_entries=128
+hdr_entsz=128
+Current partition structure:
+ 1 P EFI System                  2048    1050623    1048576 [EFI System Partition]
+ 2 P Unknown                  1050624 1250263039 1249212416
+
+search_part()
+Disk /dev/sda - 640 GB / 596 GiB - CHS 77825 255 63
+FAT32 at 0/0/41
+check_FAT: Unusual media descriptor (0xf0!=0xf8)
+FAT1 : 32-3182
+FAT2 : 3183-6333
+start_rootdir : 6334 root cluster : 2
+Data : 6334-409599
+sectors : 409600
+cluster_size : 1
+no_of_cluster : 403266 (2 - 403267)
+fat_length 3151 calculated 3151
+FAT differs, FAT sectors=0-16/3151
+heads/cylinder 16 (FAT) != 255 (HD)
+sect/track 32 (FAT) != 63 (HD)
+set_FAT_info: name from BS used
+
+FAT32 at 0/0/41
+     EFI System                    40     409639     409600 [EFI]
+     FAT32, blocksize=512, 209 MB / 200 MiB
+
+HFS+ magic value at 25/127/15
+part_size 1249591904
+     Mac HFS                   409640 1250001543 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+Results
+   P EFI System                    40     409639     409600 [EFI]
+     FAT32, blocksize=512, 209 MB / 200 MiB
+   P Mac HFS                   409640 1250001543 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+Hint for advanced users. dmsetup may be used if you prefer to avoid to rewrite the partition table for the moment:
+echo "0 409600 linear /dev/sda 40" | dmsetup create test0
+echo "0 1249591904 linear /dev/sda 409640" | dmsetup create test1
+
+interface_write()
+ 1 P EFI System                    40     409639     409600 [EFI]
+ 2 P Mac HFS                   409640 1250001543 1249591904
+
+search_part()
+Disk /dev/sda - 640 GB / 596 GiB - CHS 77825 255 63
+FAT32 at 0/0/41
+check_FAT: Unusual media descriptor (0xf0!=0xf8)
+FAT1 : 32-3182
+FAT2 : 3183-6333
+start_rootdir : 6334 root cluster : 2
+Data : 6334-409599
+sectors : 409600
+cluster_size : 1
+no_of_cluster : 403266 (2 - 403267)
+fat_length 3151 calculated 3151
+FAT differs, FAT sectors=0-16/3151
+heads/cylinder 16 (FAT) != 255 (HD)
+sect/track 32 (FAT) != 63 (HD)
+set_FAT_info: name from BS used
+
+FAT32 at 0/0/41
+     EFI System                    40     409639     409600 [EFI]
+     FAT32, blocksize=512, 209 MB / 200 MiB
+FAT32 at 0/0/47
+check_FAT: Unusual media descriptor (0xf0!=0xf8)
+FAT1 : 32-3182
+FAT2 : 3183-6333
+start_rootdir : 6334 root cluster : 2
+Data : 6334-409599
+sectors : 409600
+cluster_size : 1
+no_of_cluster : 403266 (2 - 403267)
+fat_length 3151 calculated 3151
+FAT differs, FAT sectors=896-912/3151
+heads/cylinder 16 (FAT) != 255 (HD)
+sect/track 32 (FAT) != 63 (HD)
+set_FAT_info: name from BS used
+
+FAT32 at 0/0/47
+     EFI System                    46     409645     409600 [EFI]
+     FAT32, blocksize=512, 209 MB / 200 MiB
+FAT32 at 0/32/33
+FAT1 : 32-1055
+FAT2 : 1056-2079
+start_rootdir : 2080 root cluster : 2
+Data : 2080-1048575
+sectors : 1048576
+cluster_size : 8
+no_of_cluster : 130812 (2 - 130813)
+fat_length 1024 calculated 1022
+set_FAT_info: name from BS used
+
+FAT32 at 0/32/33
+     MS Data                     2048    1050623    1048576 [NO NAME]
+     FAT32, blocksize=4096, 536 MB / 512 MiB
+FAT32 at 0/32/39
+FAT1 : 32-1055
+FAT2 : 1056-2079
+start_rootdir : 2080 root cluster : 2
+Data : 2080-1048575
+sectors : 1048576
+cluster_size : 8
+no_of_cluster : 130812 (2 - 130813)
+fat_length 1024 calculated 1022
+set_FAT_info: name from BS used
+
+FAT32 at 0/32/39
+     MS Data                     2048    1050623    1048576 [NO NAME]
+     FAT32, blocksize=4096, 536 MB / 512 MiB
+FAT32 at 0/32/39
+FAT1 : 32-1055
+FAT2 : 1056-2079
+start_rootdir : 2080 root cluster : 2
+Data : 2080-1048575
+sectors : 1048576
+cluster_size : 8
+no_of_cluster : 130812 (2 - 130813)
+fat_length 1024 calculated 1022
+set_FAT_info: name from BS used
+
+FAT32 at 0/32/39
+     MS Data                     2054    1050629    1048576 [NO NAME]
+     FAT32, blocksize=4096, 536 MB / 512 MiB
+
+HFS+ magic value at 2/98/31
+part_size 1250263664
+     Mac HFS                    38334 1250301997 1250263664
+     HFS+ blocksize=4096, 640 GB / 596 GiB
+This partition ends after the disk limits. (start=38334, size=1250263664, end=1250301997, disk end=1250263728)
+
+HFS+ magic value at 2/98/33
+
+HFS+ magic value at 2/100/58
+part_size 1250263664
+     Mac HFS                    38487 1250302150 1250263664
+     HFS+ blocksize=4096, 640 GB / 596 GiB
+This partition ends after the disk limits. (start=38487, size=1250263664, end=1250302150, disk end=1250263728)
+
+HFS+ magic value at 2/100/60
+
+HFS+ magic value at 2/107/58
+part_size 1250263664
+     Mac HFS                    38928 1250302591 1250263664
+     HFS+ blocksize=4096, 640 GB / 596 GiB
+This partition ends after the disk limits. (start=38928, size=1250263664, end=1250302591, disk end=1250263728)
+
+HFS+ magic value at 2/107/60
+
+HFS+ magic value at 2/110/6
+part_size 1250263664
+     Mac HFS                    39065 1250302728 1250263664
+     HFS+ blocksize=4096, 640 GB / 596 GiB
+This partition ends after the disk limits. (start=39065, size=1250263664, end=1250302728, disk end=1250263728)
+
+HFS+ magic value at 2/110/8
+
+HFS+ magic value at 2/111/24
+part_size 1250263664
+     Mac HFS                    39146 1250302809 1250263664
+     HFS+ blocksize=4096, 640 GB / 596 GiB
+This partition ends after the disk limits. (start=39146, size=1250263664, end=1250302809, disk end=1250263728)
+
+HFS+ magic value at 2/111/26
+
+HFS+ magic value at 2/114/20
+part_size 1250263664
+     Mac HFS                    39331 1250302994 1250263664
+     HFS+ blocksize=4096, 640 GB / 596 GiB
+This partition ends after the disk limits. (start=39331, size=1250263664, end=1250302994, disk end=1250263728)
+
+HFS+ magic value at 2/114/22
+
+HFS+ magic value at 2/118/1
+part_size 1250263664
+     Mac HFS                    39564 1250303227 1250263664
+     HFS+ blocksize=4096, 640 GB / 596 GiB
+This partition ends after the disk limits. (start=39564, size=1250263664, end=1250303227, disk end=1250263728)
+
+HFS+ magic value at 2/118/3
+
+HFS+ magic value at 2/123/7
+part_size 1250263664
+     Mac HFS                    39885 1250303548 1250263664
+     HFS+ blocksize=4096, 640 GB / 596 GiB
+This partition ends after the disk limits. (start=39885, size=1250263664, end=1250303548, disk end=1250263728)
+
+HFS+ magic value at 2/123/9
+
+HFS+ magic value at 2/128/29
+part_size 1250263664
+     Mac HFS                    40222 1250303885 1250263664
+     HFS+ blocksize=4096, 640 GB / 596 GiB
+This partition ends after the disk limits. (start=40222, size=1250263664, end=1250303885, disk end=1250263728)
+
+HFS+ magic value at 2/128/31
+
+HFS+ magic value at 2/130/24
+part_size 1250263664
+     Mac HFS                    40343 1250304006 1250263664
+     HFS+ blocksize=4096, 640 GB / 596 GiB
+This partition ends after the disk limits. (start=40343, size=1250263664, end=1250304006, disk end=1250263728)
+
+HFS+ magic value at 2/130/26
+
+HFS+ magic value at 2/132/3
+part_size 1250263664
+     Mac HFS                    40448 1250304111 1250263664
+     HFS+ blocksize=4096, 640 GB / 596 GiB
+This partition ends after the disk limits. (start=40448, size=1250263664, end=1250304111, disk end=1250263728)
+
+HFS+ magic value at 2/132/5
+
+HFS+ magic value at 2/133/53
+part_size 1250263664
+     Mac HFS                    40561 1250304224 1250263664
+     HFS+ blocksize=4096, 640 GB / 596 GiB
+This partition ends after the disk limits. (start=40561, size=1250263664, end=1250304224, disk end=1250263728)
+
+HFS+ magic value at 2/133/55
+
+HFS+ magic value at 2/137/18
+part_size 1250263664
+     Mac HFS                    40778 1250304441 1250263664
+     HFS+ blocksize=4096, 640 GB / 596 GiB
+This partition ends after the disk limits. (start=40778, size=1250263664, end=1250304441, disk end=1250263728)
+
+HFS+ magic value at 2/137/20
+
+HFS+ magic value at 2/139/13
+part_size 1250263664
+     Mac HFS                    40899 1250304562 1250263664
+     HFS+ blocksize=4096, 640 GB / 596 GiB
+This partition ends after the disk limits. (start=40899, size=1250263664, end=1250304562, disk end=1250263728)
+
+HFS+ magic value at 2/139/15
+
+HFS+ magic value at 2/140/55
+part_size 1250263664
+     Mac HFS                    41004 1250304667 1250263664
+     HFS+ blocksize=4096, 640 GB / 596 GiB
+This partition ends after the disk limits. (start=41004, size=1250263664, end=1250304667, disk end=1250263728)
+
+HFS+ magic value at 2/140/57
+
+HFS+ magic value at 2/142/58
+part_size 1250263664
+     Mac HFS                    41133 1250304796 1250263664
+     HFS+ blocksize=4096, 640 GB / 596 GiB
+This partition ends after the disk limits. (start=41133, size=1250263664, end=1250304796, disk end=1250263728)
+
+HFS+ magic value at 2/142/60
+
+HFS+ magic value at 2/144/21
+part_size 1250263664
+     Mac HFS                    41222 1250304885 1250263664
+     HFS+ blocksize=4096, 640 GB / 596 GiB
+This partition ends after the disk limits. (start=41222, size=1250263664, end=1250304885, disk end=1250263728)
+
+HFS+ magic value at 2/144/23
+
+HFS+ magic value at 25/127/15
+part_size 1249591904
+     Mac HFS                   409640 1250001543 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 25/127/17
+
+HFS+ magic value at 27/224/21
+part_size 1249591904
+     Mac HFS                   447887 1250039790 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 27/224/23
+
+HFS+ magic value at 27/226/48
+part_size 1249591904
+     Mac HFS                   448040 1250039943 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 27/226/50
+
+HFS+ magic value at 27/233/48
+part_size 1249591904
+     Mac HFS                   448481 1250040384 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 27/233/50
+
+HFS+ magic value at 27/236/44
+part_size 1249591904
+     Mac HFS                   448666 1250040569 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 27/236/46
+
+HFS+ magic value at 27/240/9
+part_size 1249591904
+     Mac HFS                   448883 1250040786 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 27/240/11
+
+HFS+ magic value at 27/243/37
+part_size 1249591904
+     Mac HFS                   449100 1250041003 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 27/243/39
+
+HFS+ magic value at 27/248/43
+part_size 1249591904
+     Mac HFS                   449421 1250041324 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 27/248/45
+
+HFS+ magic value at 27/253/49
+part_size 1249591904
+     Mac HFS                   449742 1250041645 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 27/253/51
+
+HFS+ magic value at 28/0/44
+part_size 1249591904
+     Mac HFS                   449863 1250041766 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 28/0/46
+
+HFS+ magic value at 28/2/23
+part_size 1249591904
+     Mac HFS                   449968 1250041871 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 28/2/25
+
+HFS+ magic value at 28/4/10
+part_size 1249591904
+     Mac HFS                   450081 1250041984 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 28/4/12
+
+HFS+ magic value at 28/7/22
+part_size 1249591904
+     Mac HFS                   450282 1250042185 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 28/7/24
+
+HFS+ magic value at 28/11/59
+part_size 1249591904
+     Mac HFS                   450571 1250042474 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 28/11/61
+
+HFS+ magic value at 28/13/14
+part_size 1249591904
+     Mac HFS                   450652 1250042555 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 28/13/16
+
+HFS+ magic value at 28/16/10
+part_size 1249591904
+     Mac HFS                   450837 1250042740 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 28/16/12
+
+HFS+ magic value at 28/17/28
+part_size 1249591904
+     Mac HFS                   450918 1250042821 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 28/17/30
+
+HFS+ magic value at 28/21/41
+part_size 1249591904
+     Mac HFS                   451183 1250043086 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 28/21/43
+
+HFS+ magic value at 28/23/12
+part_size 1249591904
+     Mac HFS                   451280 1250043183 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 28/23/14
+
+HFS+ magic value at 28/27/25
+part_size 1249591904
+     Mac HFS                   451545 1250043448 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 28/27/27
+
+HFS+ magic value at 28/28/59
+part_size 1249591904
+     Mac HFS                   451642 1250043545 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 28/28/61
+
+HFS+ magic value at 28/33/9
+part_size 1249591904
+     Mac HFS                   451907 1250043810 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 28/33/11
+
+HFS+ magic value at 28/34/43
+part_size 1249591904
+     Mac HFS                   452004 1250043907 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 28/34/45
+
+HFS+ magic value at 28/37/47
+part_size 1249591904
+     Mac HFS                   452197 1250044100 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 28/37/49
+
+HFS+ magic value at 28/40/27
+part_size 1249591904
+     Mac HFS                   452366 1250044269 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 28/40/29
+
+HFS+ magic value at 28/41/37
+part_size 1249591904
+     Mac HFS                   452439 1250044342 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 28/41/39
+
+HFS+ magic value at 28/42/39
+part_size 1249591904
+     Mac HFS                   452504 1250044407 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 28/42/41
+
+HFS+ magic value at 28/43/41
+part_size 1249591904
+     Mac HFS                   452569 1250044472 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 28/43/43
+
+HFS+ magic value at 28/44/43
+part_size 1249591904
+     Mac HFS                   452634 1250044537 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 28/44/45
+
+HFS+ magic value at 28/45/45
+part_size 1249591904
+     Mac HFS                   452699 1250044602 1249591904
+     HFS+ blocksize=4096, 639 GB / 595 GiB
+
+HFS+ magic value at 28/45/47
+
+recover_EXT2: s_block_group_nr=0/4765, s_mnt_count=23/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 156151552
+recover_EXT2: part_size 1249212416
+     MS Data                  1050624 1250263039 1249212416
+     ext4 blocksize=4096 Large_file Sparse_SB Recover, 639 GB / 595 GiB
+
+block_group_nr 1
+
+recover_EXT2: "e2fsck -b 32768 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=1/4765, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 156151552
+recover_EXT2: part_size 1249212416
+     MS Data                  1050622 1250263037 1249212416
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 639 GB / 595 GiB
+
+block_group_nr 1
+
+recover_EXT2: "e2fsck -b 32768 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=1/4765, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 156151552
+recover_EXT2: part_size 1249212416
+     MS Data                  1050624 1250263039 1249212416
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 639 GB / 595 GiB
+     Linux Swap               1329144 29026233847 29024904704
+     SWAP2 version 538998369, pagesize=8192, 14 TB / 13 TiB
+This partition ends after the disk limits. (start=1329144, size=29024904704, end=29026233847, disk end=1250263728)
+     Linux Swap               1329152    5523439    4194288
+     SWAP2 version 1, pagesize=4096, 2147 MB / 2047 MiB
+
+block_group_nr 3
+
+recover_EXT2: "e2fsck -b 98304 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=3/4765, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 156151552
+recover_EXT2: part_size 1249212416
+     MS Data                  1050622 1250263037 1249212416
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 639 GB / 595 GiB
+
+block_group_nr 3
+
+recover_EXT2: "e2fsck -b 98304 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=3/4765, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 156151552
+recover_EXT2: part_size 1249212416
+     MS Data                  1050624 1250263039 1249212416
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 639 GB / 595 GiB
+
+block_group_nr 5
+
+recover_EXT2: "e2fsck -b 163840 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=5/4765, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 156151552
+recover_EXT2: part_size 1249212416
+     MS Data                  1050622 1250263037 1249212416
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 639 GB / 595 GiB
+
+block_group_nr 5
+
+recover_EXT2: "e2fsck -b 163840 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=5/4765, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 156151552
+recover_EXT2: part_size 1249212416
+     MS Data                  1050624 1250263039 1249212416
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 639 GB / 595 GiB
+
+block_group_nr 7
+
+recover_EXT2: "e2fsck -b 229376 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=7/4765, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 156151552
+recover_EXT2: part_size 1249212416
+     MS Data                  1050622 1250263037 1249212416
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 639 GB / 595 GiB
+
+block_group_nr 7
+
+recover_EXT2: "e2fsck -b 229376 -B 4096 device" may be needed
+recover_EXT2: s_block_group_nr=7/4765, s_mnt_count=0/4294967295, s_blocks_per_group=32768, s_inodes_per_group=8192
+recover_EXT2: s_blocksize=4096
+recover_EXT2: s_blocks_count 156151552
+recover_EXT2: part_size 1249212416
+     MS Data                  1050624 1250263039 1249212416
+     ext4 blocksize=4096 Large_file Sparse_SB Backup_SB, 639 GB / 595 GiB
+SIGINT detected! TestDisk has been killed.
