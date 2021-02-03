@@ -1,18 +1,23 @@
-import sqlite3
-from sqlite3 import Error
+''' database example '''
 
-def create_connection(db_file):
-    ''' create a database connection to sqlite db '''
-    conn = None
-    try:
-        conn = sqlite3.connect(db_file)
-        print(sqlite3.version)
-    except Error as e:
-        print(e)
-    finally:
-        if conn:
-            conn.close()
+import sqlite3
 
 if __name__ == '__main__':
-    create_connection(r'./temp.db')
+    # connect database
+    cnx = sqlite3.connect('./accounts.db')
 
+    # create cursor object on connection
+    crs = cnx.cursor()
+
+    # open sql file
+    sql_file = open('query.sql')
+
+    # parse sql file into string
+    sql_string = sql_file.read()
+
+    # execute sql file on cursor
+    crs.executescript(sql_string)
+
+    # show db contents
+    for records in crs.execute('select * from accounts'):
+        print(records)
