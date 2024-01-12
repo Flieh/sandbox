@@ -9,6 +9,12 @@ def factorial(n):
     if n == 1:
         return 1
     return n * factorial(n - 1)
+def fib(n):
+    cache = {0:0, 1:1}
+    if n in cache:
+        return cache[n]
+    cache[n] = fib(n - 1) + fib(n - 2)
+    return cache[n]
 def fibit(n):
     a = 0
     b = 1
@@ -32,14 +38,18 @@ class Fibonacci:
             raise ValueError(f'Positive integer number expected, got "{n}"')
             # Check for computed Fibonacci numbers
 
-        if n >= len(self.cache):
+        if n < len(self.cache):
+            return self.cache[n]
+        else:
             # Compute and cache the requested Fibonacci number
-            self.cache.append(self(n-1)+self(n-2))
+            fib_number = self(n - 1) + self(n - 2)
+            self.cache.append(fib_number)
 
         return self.cache[n]
 
+
 if __name__ == "__main__":
     fib_of = Fibonacci()
-    sys.setrecursionlimit(100000)
-    print(fib_of(13420))
-    sys.setrecursionlimit(1000)
+    print(fib_of(5))
+    print(fib_of(15))
+    print(fib_of(19))
